@@ -1,7 +1,4 @@
----
-layout: default
-title: My GitHub Pages
----
+# Test
 
 
 Eine Beispielsdatei für Testzwecke
