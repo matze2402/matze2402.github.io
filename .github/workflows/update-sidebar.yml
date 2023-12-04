@@ -15,7 +15,6 @@ jobs:
 
       - name: Run Automation Script
         run: |
-         
           python .github/scripts/update_sidebar.py
 
         env:
