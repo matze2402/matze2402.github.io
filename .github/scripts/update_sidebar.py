@@ -1,7 +1,7 @@
 import os
 import json
 
-folder_path = "main/pages/mydoc"
+folder_path = "matze2402/matze2402.github.io/tree/main/pages"
 sidebar_path = "matze2402/matze2402.github.io/blob/main/_data/sidebars/home_sidebar.yml"
 
 # Get a list of files in the folder
