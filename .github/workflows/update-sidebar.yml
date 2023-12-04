@@ -1,4 +1,4 @@
-name: Update Sidebar
+name: Sidebar Automation
 
 on:
   push:
@@ -10,12 +10,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Run update script
+      - name: Run Automation Script
         run: |
-         python update_sidebar.py
-           
-           
-           
+         
+          python .github/scripts/update_sidebar.py
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.testtoken}}
