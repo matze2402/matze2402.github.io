@@ -1,14 +1,11 @@
-folder_path = "https://github.com/matze2402/matze2402.github.io.git/tree/main/pages/mydoc"
-sidebar_path = "matze2402/matze2402.github.io/blob/main/_data/sidebars/home_sidebar.yml"
-
-
 import os
 import json
 
-
+folder_path = "https://github.com/matze2402/matze2402.github.io.git/tree/main/pages/mydoc"
+sidebar_path = "matze2402/matze2402.github.io/blob/main/_data/sidebars/home_sidebar.yml"
 
 # Get a list of files in the folder
-files = os.listdir(folder_path)
+files = os.getcwd(folder_path)
 
 # Update the sidebar configuration
 with open(sidebar_path, 'r') as f:
