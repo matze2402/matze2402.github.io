@@ -13,7 +13,7 @@ with open(sidebar_path, 'r') as f:
 
 # Modify the sidebar based on the new files
 for file in files:
-    sidebar["New Files"].append({"text": file, "url": f"/path/to/folder/{file}"})
+    sidebar["sections"]["New Files"].append({"text": file, "url": f"/path/to/folder/{file}"})
 
 # Save the updated sidebar
 with open(sidebar_path, 'w') as f:
