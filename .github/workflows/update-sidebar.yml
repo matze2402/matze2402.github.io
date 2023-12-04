@@ -15,8 +15,12 @@ jobs:
 
       - name: Run update script
         run: |
+           $ python
+           Python 2.7.5+ (default, Sep 19 2013, 13:48:49) 
+           [GCC 4.8.1] on linux2
+           Type "help", "copyright", "credits" or "license" for more information.
            
-           import os python
+           import os 
            
            repo_path = os.getcwd()
            files = [f for f in os.listdir(repo_path) if os.path.isfile(os.path.join(repo_path, f))]
