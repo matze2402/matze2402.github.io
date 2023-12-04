@@ -6,4 +6,4 @@ _pdf
 .idea
 vendor/
 .bundle/
-.github/scripts/update_sidebar.py
+
