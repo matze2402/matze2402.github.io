@@ -15,7 +15,7 @@ jobs:
 
       - name: Run update script
         run: |
-          update_sidebar.py
+         python update_sidebar.py
            
            
            
