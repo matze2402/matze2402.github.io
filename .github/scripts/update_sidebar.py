@@ -9,7 +9,7 @@ files = os.listdir(folder_path)
 
 # Update the sidebar configuration
 with open(sidebar_path, 'r') as f:
-    sidebar = yaml.load(f)
+    sidebar = yaml.safe_load(f)
 
 # Modify the sidebar based on the new files
 for file in files:
