@@ -1,5 +1,5 @@
 import os
-import json
+import yaml
 
 folder_path = "./pages/mydoc"
 sidebar_path = "./_data/sidebars/home_sidebar.yml"
@@ -9,7 +9,7 @@ files = os.listdir(folder_path)
 
 # Update the sidebar configuration
 with open(sidebar_path, 'r') as f:
-    sidebar = json.load(f)
+    sidebar = yaml.load(f)
 
 # Modify the sidebar based on the new files
 for file in files:
@@ -17,4 +17,4 @@ for file in files:
 
 # Save the updated sidebar
 with open(sidebar_path, 'w') as f:
-    json.dump(sidebar, f, indent=2)
+    yaml.dump(sidebar, f, indent=2)
