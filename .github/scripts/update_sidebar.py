@@ -1,7 +1,13 @@
 import os
 import json
 
-folder_path = "matze2402.github.io/tree/main/pages/mydoc"
+folder_path = 
+import os
+
+cwd = os.getcwd()  # Get the current working directory (cwd)
+files = os.listdir(cwd)  # Get all the files in that directory
+print("Files in %r: %s" % (cwd, files))
+
 sidebar_path = "matze2402/matze2402.github.io/blob/main/_data/sidebars/home_sidebar.yml"
 
 # Get a list of files in the folder
