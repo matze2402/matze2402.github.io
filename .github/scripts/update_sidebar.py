@@ -1,8 +1,8 @@
 import os
 import json
 
-folder_path = "/matze2402/matze2402.github.io/tree/main/pages/mydoc"
-sidebar_path = "/matze2402/matze2402.github.io/blob/main/_data/sidebars/home_sidebar.yml"
+folder_path = "https://github.com/matze2402/matze2402.github.io/tree/main/pages/mydoc"
+sidebar_path = "matze2402/matze2402.github.io/blob/main/_data/sidebars/home_sidebar.yml"
 
 # Get a list of files in the folder
 files = os.listdir(folder_path)
