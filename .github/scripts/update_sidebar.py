@@ -9,7 +9,7 @@ files = os.listdir(folder_path)
 
 # Update the sidebar configuration
 with open(sidebar_path, 'r') as f:
-    sidebar = json.safe(f)
+    sidebar = json.load(f)
 
 # Modify the sidebar based on the new files
 for file in files:
