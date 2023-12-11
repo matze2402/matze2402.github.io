@@ -13,7 +13,7 @@ with open(sidebar_path, 'r') as f:
 
 # Modify the sidebar based on the new files
 for file in files:
-    sidebar["Products"]["New Files"].append({"text": file, "url": f"/path/to/folder/{file}"}) ##vielleicht mal mit Runden Klammern probieren
+    sidebar[entries]["New Files"].append({"text": file, "url": f"/path/to/folder/{file}"}) ##vielleicht mal mit Runden Klammern probieren
 
 # Save the updated sidebar
 with open(sidebar_path, 'w') as f:
