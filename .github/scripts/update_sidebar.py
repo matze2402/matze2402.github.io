@@ -16,5 +16,5 @@ for file in files:
    sidebar['entries'][0]['folders'][0]['folderitems'].append({"title": file , "url": f"./pages/mydoc/{file}"})
 
 # Save the updated sidebar
-with open(sidebar_path, 'w') as f:
-    yaml.dump(sidebar, f, indent=2)
+#with open(sidebar_path, 'w') as f:
+    #yaml.dump(sidebar, f, indent=2)
