@@ -3,7 +3,7 @@ import yaml
 import shutil
 
 folder_path = "./pages/Testpurpose"
-sidebar_path = ./_data/sidebars/mydoc_sidebar.yml"
+sidebar_path = "./_data/sidebars/mydoc_sidebar.yml"
 
 # Get a list of files in the folder
 files = os.listdir(folder_path)
