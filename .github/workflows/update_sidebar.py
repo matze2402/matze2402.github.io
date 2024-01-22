@@ -1,6 +1,6 @@
 import os
-import yaml
 import shutil
+import yaml
 
 folder_path = "./pages/Testpurpose"
 sidebar_path = "./_data/sidebars/mydoc_sidebar.yml"
