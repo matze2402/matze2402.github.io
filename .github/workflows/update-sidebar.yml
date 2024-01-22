@@ -15,7 +15,7 @@ jobs:
 
       - name: Run Automation Script
         run: |
-          python .github/workflows/scripts/update_sidebar.py
+          python .github/scripts/update_sidebar.py
 
         env:
           GITHUB_TOKEN: ${{ secrets.testtoken}}
