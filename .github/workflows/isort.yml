@@ -1,3 +1,4 @@
+on:
 name: python-isort
 author: jamescurtin
 description: Run isort on a Python project
