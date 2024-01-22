@@ -6,6 +6,6 @@ _pdf
 .idea
 vendor/
 .bundle/
-.github/workflows
+
 
 
