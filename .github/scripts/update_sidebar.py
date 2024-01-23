@@ -50,4 +50,4 @@ move_files(source_folder, destination_folder)
 with open(sidebar_path, 'w') as f:
     yaml.dump(sidebar, f, indent=2)
 
-# 5
+# 6
