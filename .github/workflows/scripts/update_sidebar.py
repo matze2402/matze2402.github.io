@@ -9,15 +9,17 @@ sidebar_path = "./_data/sidebars/mydoc_sidebar.yml"
 files = os.listdir(folder_path)
 
 # Update the sidebar configuration
-with open(sidebar_path, 'r') as f:
+with open(sidebar_path, "r") as f:
     sidebar = yaml.safe_load(f)
 
-a = sidebar['entries'][0]['folders'][0]['folderitems']
+a = sidebar["entries"][0]["folders"][0]["folderitems"]
 for file in files:
-    z = {"title": file , "url": f"/{file}"}   #erstellen eines neuen dicts in der richtigen Formatierung
+    z = {
+        "title": file,
+        "url": f"/{file}",
+    }  # erstellen eines neuen dicts in der richtigen Formatierung
 
-a.append(z) # eine neues dict wird damit hinzugefügt
-
+a.append(z)  # eine neues dict wird damit hinzugefügt
 
 
 def move_files(source_folder, destination_folder):
@@ -40,6 +42,7 @@ def move_files(source_folder, destination_folder):
         shutil.move(source_path, destination_path)
         print(f"Moved: {file}")
 
+
 # Example usage:
 source_folder = "./pages/Testpurpose"
 destination_folder = "./pages/Testordner_neu"
@@ -47,7 +50,7 @@ destination_folder = "./pages/Testordner_neu"
 move_files(source_folder, destination_folder)
 
 # Save the updated sidebar
-with open(sidebar_path, 'w') as f:
+with open(sidebar_path, "w") as f:
     yaml.dump(sidebar, f, indent=2)
 
 # 4
