@@ -1,75 +1,29 @@
----
-name: Lint commit
+# This workflow executes several linters on changed files based on languages used in your code base whenever
+# you push a code or open a pull request.
+#
+# You can adjust the behavior by modifying this file.
+# For more information, see:
+# https://github.com/github/super-linter
+name: Lint Code Base
 
 on:
   push:
+    branches: [ "main" ]
   pull_request:
-  merge_group:
-
-# Don't grant any access by default
-permissions: {}
-
+    branches: [ "main" ]
 jobs:
-  commitlint:
+  run-lint:
     runs-on: ubuntu-latest
-    permissions:
-        contents: read
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
         with:
+          # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
 
-      - name: Check if the pull request contains a single commit
-        if: github.event_name == 'pull_request'
-        run: |
-          commit_count=${{ github.event.pull_request.commits }}
-
-          if [ -z ${commit_count} ]; then
-            echo "[ERROR] commit_count is empty"
-            exit 1
-          fi
-
-          if [[ ${commit_count} -ne 1 ]]; then
-            echo "[ERROR] This pull request contains ${commit_count} commits. Squash these commits into a single commit."
-            exit 1
-          else
-            echo "This pull request contains ${commit_count} commit."
-          fi
-
-      - name: Set commit metadata
-        run: |
-          SET_INTERVAL_VALUES="true"
-          if [[ ${{ github.event_name }} == 'push' ]] || [[ ${{ github.event_name }} == 'merge_group' ]]; then
-            echo "Using default commit metadata"
-            SET_INTERVAL_VALUES="false"
-          elif [[ ${{ github.event_name }} == 'pull_request' ]]; then
-            FROM_INTERVAL_COMMITLINT=${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }}
-            TO_INTERVAL_COMMITLINT=${{ github.event.pull_request.head.sha }}
-          else
-            echo "[ERROR] Event not supported when setting commit metadata"
-            exit 1
-          fi
-
-          if [ "${SET_INTERVAL_VALUES}" == "true" ]; then
-            if [ -z "${FROM_INTERVAL_COMMITLINT}" ]; then
-              echo "[ERROR] FROM_INTERVAL_COMMITLINT is empty"
-              exit 1
-            fi
-
-            if [ -z "${TO_INTERVAL_COMMITLINT}" ]; then
-              echo "[ERROR] TO_INTERVAL_COMMITLINT is empty"
-              exit 1
-            fi
-
-            {
-              echo "FROM_INTERVAL_COMMITLINT=${FROM_INTERVAL_COMMITLINT}"
-              echo "TO_INTERVAL_COMMITLINT=${TO_INTERVAL_COMMITLINT}"
-            } >> "${GITHUB_ENV}"
-          else
-            echo "Skip updating GITHUB_ENV. SET_INTERVAL_VALUES: ${SET_INTERVAL_VALUES}"
-          fi
-
-      - name: Validate commits
-        run: |
-          make lint-commits
-...
+      - name: Lint Code Base
+        uses: github/super-linter@v4
+        env:
+          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_BRANCH: "main"
+          GITHUB_TOKEN: ${{ secrets.testtoken }}
