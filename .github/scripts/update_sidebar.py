@@ -43,8 +43,8 @@ def move_files(source_folder, destination_folder):
         print(f"Moved: {file}")
 
 # # Example usage:
-source_folder  =  "C:/Users/smmagack/Desktop/documentation-theme-jekyll-gh-pages/pages/Testpurpose"
-destination_folder = "C:/Users/smmagack/Desktop/documentation-theme-jekyll-gh-pages/pages/Testordner_neu"
+source_folder  =  "./pages/Testpurpose"
+destination_folder = "./pages/Testordner_neu"
 
 move_files(source_folder, destination_folder)
     
