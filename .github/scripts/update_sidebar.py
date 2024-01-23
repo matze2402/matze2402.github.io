@@ -19,6 +19,10 @@ for file in files:
 a.append(z) # eine neues dict wird damit hinzugefügt
 
 
+# Save the updated sidebar
+with open(sidebar_path, 'w') as f:
+    yaml.dump(sidebar, f, indent=2)
+
 
 def move_files(source_folder, destination_folder):
     # Check if the source folder exists
@@ -46,8 +50,5 @@ destination_folder = "./pages/Testordner_neu"
 
 move_files(source_folder, destination_folder)
 
-# Save the updated sidebar
-with open(sidebar_path, 'w') as f:
-    yaml.dump(sidebar, f, indent=2)
 
-# 6
+# 7
