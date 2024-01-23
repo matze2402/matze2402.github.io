@@ -18,6 +18,9 @@ for file in files:
 
 a.append(z) # eine neues dict wird damit hinzugefügt
 
+with open(sidebar_path, 'w') as f:
+    json.dump(sidebar, f, indent=2)
+
 
 
 
