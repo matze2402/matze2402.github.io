@@ -4,8 +4,7 @@ import yaml
 folder_path = "./pages/Testpurpose"
 sidebar_path = "./_data/sidebars/mydoc_sidebar.yml"
 
-import os
-import yaml
+
 
 def update_sidebar(folder_path, sidebar_path):
     # Get a list of files in the folder
