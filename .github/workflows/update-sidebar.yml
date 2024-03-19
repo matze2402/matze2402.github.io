@@ -4,51 +4,19 @@ on:
   push:
     branches:
       - main
+    #paths:
+      #- 'pages/Testpurpose/*.md'
 
 jobs:
-  updateSidebar:
+  update_sidebar:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v2
-      
-      # Generate the YAML content for the sidebar
-      - name: Generate Sidebar YAML
+
+      - name: Run Automation Script
+        env:
+          GITHUB_TOKEN: ${{ secrets.my_token }}
         run: |
-          const fs = require('fs');
-          const path = require('path');
-          const yaml = require('js-yaml');
-
-          const folderPath = './pages/Testpurpose';
-          const sidebarPath = './_data/sidebars/mydoc_sidebar.yml';
-
-          try {
-            const files = fs.readdirSync(folderPath);
-            
-            // Load existing sidebar
-            let sidebar = yaml.safeLoad(fs.readFileSync(sidebarPath, 'utf8'));
-
-            // Append new items to the sidebar
-            for (const file of files) {
-              const new_item = {"title": file, "url": `/pages/Testpurpose/${file}`, "output": "web, pdf"};
-              sidebar['entries'][-1]['folders'][-1]['folderitems'].push(new_item);
-            }
-
-            // Save the updated sidebar
-            fs.writeFileSync(sidebarPath, yaml.dump(sidebar, { lineWidth: -1 }), 'utf8');
-            console.log("Updated sidebar content:", sidebar);
-            console.log("Sidebar updated and saved successfully.");
-          } catch (err) {
-            console.error('Error generating sidebar YAML:', err);
-            process.exit(1);
-          }
-
-      # Commit and push changes to the repository
-      - name: Commit and push changes
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git add _data/sidebars/mydoc_sidebar.yml
-          git commit -m "chore: Update sidebar with changes"
-          git push
+          python .github/scripts/update_sidebar.py
