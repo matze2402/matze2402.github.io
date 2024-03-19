@@ -12,10 +12,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Install dependencies
-        run: npm install
-
+      
       # Generate the YAML content for the sidebar
       - name: Generate Sidebar YAML
         run: |
