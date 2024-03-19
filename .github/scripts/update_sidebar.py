@@ -26,5 +26,6 @@ def update_sidebar(folder_path, sidebar_path):
     with open(sidebar_path, 'w') as f:
         yaml.dump(sidebar, f, default_flow_style=False)
     print("Updated sidebar content:", sidebar)
+    print("Sidebar updated and saved successfully.")
 
 update_sidebar(folder_path, sidebar_path)
