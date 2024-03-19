@@ -20,3 +20,11 @@ jobs:
 
         env:
           GITHUB_TOKEN: ${{ secrets.testtoken}}
+      
+      - name: Commit Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add _data/sidebars/mydoc_sidebar.yml
+          git diff --cached --exit-code || git commit -m "Update sidebar"
+          git push
