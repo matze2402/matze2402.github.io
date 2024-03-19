@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      -  '.pages/Testpurpose/*.md'
+      -  'pages/Testpurpose/*.md'
 jobs:
   update-sidebar:
     runs-on: ubuntu-latest
