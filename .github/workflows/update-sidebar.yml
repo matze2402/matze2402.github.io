@@ -1,13 +1,14 @@
-name: Sidebar Automation
+name: Update Sidebar
 
 on:
   push:
     branches:
       - main
-    ##paths:
-      #-  'pages/Testpurpose/*.md'
+    #paths:
+      #- 'pages/Testpurpose/*.md'
+
 jobs:
-  update-sidebar:
+  update_sidebar:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,16 +16,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run Automation Script
+        env:
+          GITHUB_TOKEN: ${{ secrets.testtoken }}
         run: |
           python .github/scripts/update_sidebar.py
-
-        env:
-          GITHUB_TOKEN: ${{ secrets.testtoken}}
-      
-      - name: Commit Changes
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add _data/sidebars/mydoc_sidebar.yml
-          git diff --cached --exit-code || git commit -m "Update sidebar"
-          git push
