@@ -1,52 +1,34 @@
 import os
-import shutil
 import yaml
 
 folder_path = "./pages/Testpurpose"
 sidebar_path = "./_data/sidebars/mydoc_sidebar.yml"
 
-# Get a list of files in the folder
-files = os.listdir(folder_path)
+import os
+import yaml
 
-# Update the sidebar configuration
-with open(sidebar_path, 'r') as f:
-    sidebar = yaml.safe_load(f)
+def update_sidebar(folder_path, sidebar_path):
+    # Get a list of files in the folder
+    files = os.listdir(folder_path)
 
-a = sidebar['entries'][0]['folders'][0]['folderitems']
-for file in files:
-    z = {"title": file , "url": f"/{file}"}   
+    # Update the sidebar configuration
+    with open(sidebar_path, 'r') as f:
+        sidebar = yaml.safe_load(f)
 
-a.append(z) 
-
-with open(sidebar_path, 'w') as f:
-    yaml.dump(sidebar, f, indent=2)
-
-
-def move_files(source_folder, destination_folder):
-    # Check if the source folder exists
-    if not os.path.exists(source_folder):
-        print(f"Source folder '{source_folder}' does not exist.")
-        return
-
-    # Check if the destination folder exists, create it if not
-    if not os.path.exists(destination_folder):
-        os.makedirs(destination_folder)
-
-    # Get a list of all files in the source folder
-    files = os.listdir(source_folder)
-
-    # Move each file to the destination folder
+    # Append new items to the sidebar
     for file in files:
-        source_path = os.path.join(source_folder, file)
-        destination_path = os.path.join(destination_folder, file)
-        shutil.move(source_path, destination_path)
-        print(f"Moved: {file}")
+        # Create a dictionary for the new item
+        new_item = {"title": file, "url": f"/pages/Testpurpose/{file}", "output": "web, pdf"}
 
-# # Example usage:
-source_folder  =  "./pages/Testpurpose"
-destination_folder = "./pages/Testordner_neu"
+        # Append the new item to the appropriate section
+        sidebar['entries'][-1]['folders'][-1]['folderitems'].append(new_item)
 
-move_files(source_folder, destination_folder)
+    # Save the updated sidebar
+    with open(sidebar_path, 'w') as f:
+        yaml.dump(sidebar, f, default_flow_style=False)
+
+
+
     
     
     
