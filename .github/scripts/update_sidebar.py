@@ -4,15 +4,15 @@ import yaml
 folder_path = "./pages/Testpurpose"
 sidebar_path = "./_data/sidebars/mydoc_sidebar.yml"
 
-
-
 def update_sidebar(folder_path, sidebar_path):
     # Get a list of files in the folder
     files = os.listdir(folder_path)
+    print("Files in folder:", files)
 
     # Update the sidebar configuration
     with open(sidebar_path, 'r') as f:
         sidebar = yaml.safe_load(f)
+    print("Original sidebar content:", sidebar)
 
     # Append new items to the sidebar
     for file in files:
@@ -25,15 +25,6 @@ def update_sidebar(folder_path, sidebar_path):
     # Save the updated sidebar
     with open(sidebar_path, 'w') as f:
         yaml.dump(sidebar, f, default_flow_style=False)
+    print("Updated sidebar content:", sidebar)
 
-
-
-    
-    
-    
-
-
-
-
-
-
+update_sidebar(folder_path, sidebar_path)
