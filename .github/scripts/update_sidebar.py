@@ -8,7 +8,7 @@ folder_path = './pages/Testpurpose'  # Update this with your folder path
 sidebar_file_path = './_data/sidebars/mydoc_sidebar.yml'  # Update this with your desired sidebar file path
 
 import os
-files = [f for f in os.listdir('folder_patj') if os.path.isfile(f)]
+files = [f for f in os.listdir('folder_path') if os.path.isfile(f)]
 
 sidebar_file = open('sidebar_file_path', 'w')
 
