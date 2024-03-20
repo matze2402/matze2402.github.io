@@ -4,19 +4,25 @@ on:
   push:
     branches:
       - main
-    #paths:
-      #- 'pages/Testpurpose/*.md'
+    paths:
+      - 'pages/Testpurpose/*.md'
 
 jobs:
   update_sidebar:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Run Automation Script
-        env:
-          GITHUB_TOKEN: ${{ secrets.my_token }}
+      - name: Generate Sidebar
         run: |
-          python .github/scripts/update_sidebar.py
+          python generate_sidebar.py
+
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add sidebar_content.md
+          git commit -m "Update sidebar content"
+          git push
